@@ -1,4 +1,4 @@
-import axiosInstance from '../utils/axiosInstance';
+import axiosInstance from '../utils/axiosinstance';
 import { API_PATHS } from '../utils/apiPaths';
 
 const getQuizzesForDocument = async (documentId) => {
@@ -55,3 +55,4 @@ const quizService = {
 };
 
 export default quizService;
+

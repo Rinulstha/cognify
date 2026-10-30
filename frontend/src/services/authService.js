@@ -1,4 +1,4 @@
-import axiosInstance from '../utils/axiosInstance';
+import axiosInstance from '../utils/axiosinstance';
 import { API_PATHS } from '../utils/apiPaths';
 
 const login = async (email, password) => {
@@ -62,3 +62,4 @@ const authService = {
   };
   
 export default authService;
+

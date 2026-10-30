@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import flashcardService from '../../services/flashService';
-import PageHeader from '../../components/common/PageHeader';
+import PageHeader from '../../components/common/pageHeader';
 import Spinner from '../../components/common/Spinner';
 import EmptyState from '../../components/common/EmptyState';
 import FlashcardSetCard from '../../components/flashcards/FlashcardSetCard';

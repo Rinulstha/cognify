@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PageHeader from "../../components/common/PageHeader";
+import PageHeader from "../../components/common/pageHeader";
 import Button from "../../components/common/Button";
 import Spinner from "../../components/common/Spinner";
 import authService from "../../services/authService";

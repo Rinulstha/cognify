@@ -11,7 +11,7 @@ import toast from "react-hot-toast";
 
 import flashcardService from "../../services/flashService";
 import aiService from "../../services/aiService";
-import PageHeader from "../../components/common/PageHeader";
+import PageHeader from "../../components/common/pageHeader";
 import Spinner from "../../components/common/Spinner";
 import EmptyState from "../../components/common/EmptyState";
 import Button from "../../components/common/Button";
