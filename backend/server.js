@@ -22,17 +22,31 @@ const __dirname = path.dirname(__filename);
 // Initialize express app
 const app = express();
 
+const allowedOrigins = new Set([
+  'http://localhost:5173',
+  'https://cognify-six-snowy.vercel.app',
+  ...(process.env.CORS_ORIGINS || '')
+    .split(',')
+    .map((origin) => origin.trim().replace(/\/$/, ''))
+    .filter(Boolean),
+]);
+
 // Connect to MongoDB
 connectDB();
 
 // Middleware to handle CORS
 app.use(
   cors({
-    origin: [
-    "http://localhost:5173",
-    "https://cognify-t0ep.onrender.com"
-  ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin(origin, callback) {
+      // Requests without an Origin header (health checks and server-to-server calls)
+      // are not subject to browser CORS checks.
+      if (!origin || allowedOrigins.has(origin.replace(/\/$/, ''))) {
+        return callback(null, true);
+      }
+
+      return callback(new Error(`Origin ${origin} is not allowed by CORS`));
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
