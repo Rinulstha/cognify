@@ -28,7 +28,10 @@ connectDB();
 // Middleware to handle CORS
 app.use(
   cors({
-    origin: "*",
+    origin: [
+    "http://localhost:5173",
+    "https://cognify-t0ep.onrender.com"
+  ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
@@ -38,6 +41,12 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: "Cognify Backend is running!"
+  });
+});
 
 // Static folder for uploads
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
